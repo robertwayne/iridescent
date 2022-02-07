@@ -26,7 +26,7 @@ iridescent = { version = "0.1" }
 
 The only requirement is that you import the `Styled` trait into the module you
 plan on using library methods. Once you have declared it at the top of your module,
-the methods will be avaiulable on all `&str` and `String` types.
+the methods will be available on all `&str` and `String` types.
 
 Note that all `Styled` methods can be chained, as seen in the example above
 where first we call the foreground method, followed by the bold method. These do
