@@ -77,7 +77,7 @@ fn main() {
 
 ## Examples
 
-If you have cloned the `iridescent` repository, you can run an example, use the
+If you have cloned the `iridescent` repository, you can run an example with the
 command `cargo run --example <example_name>`. You can add features, if needed,
 with --features <feature_name>.
 
