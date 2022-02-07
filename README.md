@@ -94,7 +94,7 @@ with --features <feature_name>.
 <!-- markdownlint-disable -->
 | Flag     | Default  | Description                                                                         | Dependencies |
 |----------|----------|-------------------------------------------------------------------------------------|--------------|
-| `random` | Disabled |enables the use of `Color::random()` and Color::random_rgb()`                        | `rand`       |
+| `random` | Disabled |Enables the use of `Color::random()` and `Color::random_rgb()`                       | `rand`       |
 <!-- markdownlint-enable -->
 
 ## License
