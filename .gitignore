@@ -1,0 +1,14 @@
+# Directories
+target
+
+# Config Files
+.env
+.cargo/config
+.cargo/config.toml
+
+# User Settings
+.vscode
+.idea
+
+# Other
+Cargo.lock

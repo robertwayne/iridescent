@@ -1,0 +1,19 @@
+[package]
+name = "iridescent"
+authors = ["Rob Wagner <rob@sombia.com"]
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+description = "Terminal text styling via ANSI escape sequences."
+homepage = "https://robertwayne.github.io/iridescent"
+repository = "https://github.com/robertwayne/iridescent"
+categories = ["command-line-interface"]
+keywords = ["ansi", "terminal"]
+readme = "README.md"
+
+[dependencies]
+rand = { version = "0.8", optional = true }
+
+[features]
+default = []
+random = ["rand"]
