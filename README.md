@@ -2,6 +2,13 @@
 
 <!-- markdownlint-disable -->
 <div align="center">
+    <a href="https://crates.io/crates/iridescent">
+        <img src="https://img.shields.io/crates/v/iridescent?style=flat-square" alt="crates.io badge">
+    </a>
+    <a href="https://docs.rs/iridescent/0.1.0/iridescent/">
+        <img src="https://img.shields.io/docsrs/iridescent?style=flat-square" alt="docs.rs badge">
+    </a>
+    <p>Simple ANSI styling for terminal text.</p>
     <img src="example.gif" alt="terminal screenshot showing off styled output">
 </div>
 <!-- markdownlint-enable -->
