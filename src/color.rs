@@ -1,7 +1,7 @@
 use crate::rgb::Rgb;
 
 /// Represents a color that will be applied to a `StyledString`.
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Color {
     Empty,
     Foreground(u8),

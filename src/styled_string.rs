@@ -6,7 +6,7 @@ use crate::{constants::*, Color, Rgb};
 /// constructed when the `Display` is called. It is preferred to use the `Styled` trait to
 /// interact with your strings instead of manually constructing a `StyledString`, which
 /// is more verbose.
-#[derive(Clone, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq, Eq)]
 #[must_use]
 pub struct StyledString {
     text: String,
