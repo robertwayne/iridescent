@@ -91,9 +91,8 @@ mod tests {
 
         let bg = "random background".rgb_background(Rgb::new(50, 50, 50));
 
-        let combined = "combined"
-            .rgb_foreground(Rgb::new(255, 255, 255))
-            .rgb_background(Rgb::new(50, 50, 50));
+        let combined =
+            "combined".rgb_foreground(Rgb::new(255, 255, 255)).rgb_background(Rgb::new(50, 50, 50));
 
         let combined_with_modes = "combined with modes"
             .bold()
@@ -101,19 +100,10 @@ mod tests {
             .rgb_background(Rgb::new(25, 25, 25));
 
         assert_eq!(pure_red.to_string(), "\x1b[38;2;255;0;0mpure red\x1b[0m");
-        assert_eq!(
-            pure_green.to_string(),
-            "\x1b[38;2;0;255;0mpure green\x1b[0m"
-        );
+        assert_eq!(pure_green.to_string(), "\x1b[38;2;0;255;0mpure green\x1b[0m");
         assert_eq!(pure_blue.to_string(), "\x1b[38;2;0;0;255mpure blue\x1b[0m");
-        assert_eq!(
-            bg.to_string(),
-            "\x1b[48;2;50;50;50mrandom background\x1b[0m"
-        );
-        assert_eq!(
-            combined.to_string(),
-            "\x1b[38;2;255;255;255;48;2;50;50;50mcombined\x1b[0m"
-        );
+        assert_eq!(bg.to_string(), "\x1b[48;2;50;50;50mrandom background\x1b[0m");
+        assert_eq!(combined.to_string(), "\x1b[38;2;255;255;255;48;2;50;50;50mcombined\x1b[0m");
         assert_eq!(
             combined_with_modes.to_string(),
             "\x1b[1;38;2;125;125;125;48;2;25;25;25mcombined with modes\x1b[0m"

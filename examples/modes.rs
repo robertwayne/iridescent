@@ -28,12 +28,5 @@ fn main() {
     modes.push(strike);
 
     // Print all the examples
-    println!(
-        "{}",
-        modes
-            .iter()
-            .map(|s| s.to_string())
-            .collect::<Vec<String>>()
-            .join(" ")
-    );
+    println!("{}", modes.iter().map(|s| s.to_string()).collect::<Vec<String>>().join(" "));
 }

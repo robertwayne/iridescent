@@ -25,11 +25,7 @@ impl Color {
     #[cfg(feature = "random")]
     pub fn random_rgb() -> Rgb {
         {
-            Rgb::new(
-                rand::random::<u8>(),
-                rand::random::<u8>(),
-                rand::random::<u8>(),
-            )
+            Rgb::new(rand::random::<u8>(), rand::random::<u8>(), rand::random::<u8>())
         }
     }
 }
