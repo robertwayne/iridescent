@@ -1,18 +1,20 @@
 #![doc = include_str!("../README.md")]
 
-/// An enum representing different color types applied to a StyledString.
+pub mod background;
+/// An enum representing different color types applied to a `StyledString`.
 pub mod color;
 /// Various constants used by the library, including the base ANSI color values.
 pub mod constants;
-/// A struct representing an RGB (red, green, blue) value.
-pub mod rgb;
+pub mod foreground;
 /// Trait implementing various methods on `&str` and `String` types.
 pub mod styled;
 /// A struct representing the internal state of an `&str` or `String` type with
 /// applied styles.
 pub mod styled_string;
 
-pub use crate::{color::*, constants::*, rgb::*, styled::*, styled_string::*};
+pub use crate::{
+    background::*, color::*, constants::*, foreground::*, styled::*, styled_string::*,
+};
 
 #[cfg(test)]
 mod tests {
@@ -83,21 +85,21 @@ mod tests {
 
     #[test]
     fn test_high_bit_depth() {
-        let pure_red = "pure red".rgb_foreground(Rgb::new(255, 0, 0));
+        let pure_red = "pure red".foreground(Rgb::new(255, 0, 0));
 
-        let pure_green = "pure green".rgb_foreground(Rgb::new(0, 255, 0));
+        let pure_green = "pure green".foreground(Rgb::new(0, 255, 0));
 
-        let pure_blue = "pure blue".rgb_foreground(Rgb::new(0, 0, 255));
+        let pure_blue = "pure blue".foreground(Rgb::new(0, 0, 255));
 
-        let bg = "random background".rgb_background(Rgb::new(50, 50, 50));
+        let bg = "random background".background(Rgb::new(50, 50, 50));
 
         let combined =
-            "combined".rgb_foreground(Rgb::new(255, 255, 255)).rgb_background(Rgb::new(50, 50, 50));
+            "combined".foreground(Rgb::new(255, 255, 255)).background(Rgb::new(50, 50, 50));
 
         let combined_with_modes = "combined with modes"
             .bold()
-            .rgb_foreground(Rgb::new(125, 125, 125))
-            .rgb_background(Rgb::new(25, 25, 25));
+            .foreground(Rgb::new(125, 125, 125))
+            .background(Rgb::new(25, 25, 25));
 
         assert_eq!(pure_red.to_string(), "\x1b[38;2;255;0;0mpure red\x1b[0m");
         assert_eq!(pure_green.to_string(), "\x1b[38;2;0;255;0mpure green\x1b[0m");
@@ -108,5 +110,14 @@ mod tests {
             combined_with_modes.to_string(),
             "\x1b[1;38;2;125;125;125;48;2;25;25;25mcombined with modes\x1b[0m"
         );
+    }
+
+    #[test]
+    fn test_hexadecimal_strings() {
+        let white = "white".foreground("#ffffff");
+        let black = "black".foreground("#000000");
+
+        assert_eq!(white.to_string(), "\x1b[38;2;255;255;255mwhite\x1b[0m");
+        assert_eq!(black.to_string(), "\x1b[38;2;0;0;0mblack\x1b[0m");
     }
 }
