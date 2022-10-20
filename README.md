@@ -30,7 +30,7 @@ modern terminals will support up to true RGB colors, certain text modes, such as
 
 ```toml
 [dependencies]
-iridescent = { version = "0.1" }
+iridescent = { version = "0.2" }
 ```
 
 The only requirement is that you import the `Styled` trait into the module you
@@ -76,11 +76,25 @@ fn main() {
     //
     // As you can see, mixing and matching various sequence types is no problem!
     let s2 = "world"
-        .rgb_foreground(Rgb::new(4, 11, 214))
+        .foreground(&[4, 11, 214])
         .background(195)
         .blink();
 
     println!("{}, {}!", s, s2);
+}
+```
+
+### Hexadecimal Colors
+
+As of `v0.2`, you can now use hexadecimal color literals now, as well!
+
+```rust
+use iridescent::{Styled, constants::{RED, WHITE}};
+
+fn main() {
+    let hello = "Hello".foreground("#ff00ff").bold();
+    let world = "world".foreground("#00ff00").background("#0000ff");
+    println!("{hello}, {world}!");
 }
 ```
 
