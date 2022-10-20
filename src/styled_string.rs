@@ -51,63 +51,63 @@ impl StyledString {
     }
 
     /// Sets the foreground color (the text) of the string.
-    pub fn foreground(&mut self, color: impl Into<ForegroundColor>) -> Self {
+    pub fn foreground(mut self, color: impl Into<ForegroundColor>) -> Self {
         self.foreground = color.into();
-        self.to_owned()
+        self
     }
 
     /// Sets the background color of the string.
-    pub fn background(&mut self, color: impl Into<BackgroundColor>) -> Self {
+    pub fn background(mut self, color: impl Into<BackgroundColor>) -> Self {
         self.background = color.into();
-        self.to_owned()
+        self
     }
 
     /// Applies the bold attribute to the string.
-    pub fn bold(&mut self) -> Self {
+    pub fn bold(mut self) -> Self {
         self.modes.push(BOLD);
-        self.to_owned()
+        self
     }
 
     /// Applies the dim attribute to the string.
-    pub fn dim(&mut self) -> Self {
+    pub fn dim(mut self) -> Self {
         self.modes.push(DIM);
-        self.to_owned()
+        self
     }
 
     /// Applies the italic attribute to the string.
-    pub fn italic(&mut self) -> Self {
+    pub fn italic(mut self) -> Self {
         self.modes.push(ITALIC);
-        self.to_owned()
+        self
     }
 
     /// Applies the underline attribute to the string.
-    pub fn underline(&mut self) -> Self {
+    pub fn underline(mut self) -> Self {
         self.modes.push(UNDERLINE);
-        self.to_owned()
+        self
     }
 
     /// Applies the blink attribute to the string.
-    pub fn blink(&mut self) -> Self {
+    pub fn blink(mut self) -> Self {
         self.modes.push(BLINK);
-        self.to_owned()
+        self
     }
 
     /// Inverts the strings foreground and background colors.
-    pub fn invert(&mut self) -> Self {
+    pub fn invert(mut self) -> Self {
         self.modes.push(INVERT);
-        self.to_owned()
+        self
     }
 
     /// Applies the hidden attribute to the string.
-    pub fn hidden(&mut self) -> Self {
+    pub fn hidden(mut self) -> Self {
         self.modes.push(HIDDEN);
-        self.to_owned()
+        self
     }
 
     /// Applies the strike-through attribute to the string.
-    pub fn strike(&mut self) -> Self {
+    pub fn strike(mut self) -> Self {
         self.modes.push(STRIKE);
-        self.to_owned()
+        self
     }
 }
 
