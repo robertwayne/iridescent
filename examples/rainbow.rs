@@ -1,6 +1,6 @@
 #[cfg(feature = "random")]
 fn main() {
-    use iridescent::{Color, Styled, StyledString};
+    use iridescent::{ForegroundColor, Rgb, Styled, StyledString};
 
     let mut fg_low_bits: Vec<StyledString> = Vec::new();
     let mut bg_low_bits: Vec<StyledString> = Vec::new();
@@ -8,22 +8,22 @@ fn main() {
     let mut bg_high_bits: Vec<StyledString> = Vec::new();
 
     for _ in 0..12 {
-        let s = "rainbow".foreground(Color::random());
+        let s = "rainbow".foreground(Rgb::random());
         fg_low_bits.push(s);
     }
 
     for _ in 0..12 {
-        let s = "rainbow".background(Color::random());
+        let s = "rainbow".background(Rgb::random());
         bg_low_bits.push(s);
     }
 
     for _ in 0..12 {
-        let s = "rainbow".rgb_foreground(Color::random_rgb());
+        let s = "rainbow".foreground(Rgb::random());
         fg_high_bits.push(s);
     }
 
     for _ in 0..12 {
-        let s = "rainbow".rgb_background(Color::random_rgb());
+        let s = "rainbow".background(Rgb::random());
         bg_high_bits.push(s);
     }
 

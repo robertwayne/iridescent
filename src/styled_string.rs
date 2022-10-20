@@ -1,18 +1,18 @@
 use std::fmt::Display;
 
-use crate::{constants::*, Color, Rgb};
+use crate::{background::BackgroundColor, constants::*, foreground::ForegroundColor};
 
-/// Represents a string with internal data for the ANSI escape sequences, so it can be
-/// constructed when the `Display` is called. It is preferred to use the `Styled` trait to
-/// interact with your strings instead of manually constructing a `StyledString`, which
-/// is more verbose.
+/// Represents a string with internal data for the ANSI escape sequences, so it
+/// can be constructed when the `Display` is called. It is preferred to use the
+/// `Styled` trait to interact with your strings instead of manually
+/// constructing a `StyledString`, which is more verbose.
 #[derive(Clone, Debug, PartialEq, Eq)]
 #[must_use]
 pub struct StyledString {
     text: String,
     modes: Vec<u8>,
-    foreground: Color,
-    background: Color,
+    foreground: ForegroundColor,
+    background: BackgroundColor,
 }
 
 impl Default for StyledString {
@@ -20,8 +20,8 @@ impl Default for StyledString {
         Self {
             text: String::new(),
             modes: Vec::new(),
-            foreground: Color::Empty,
-            background: Color::Empty,
+            foreground: ForegroundColor::Empty,
+            background: BackgroundColor::Empty,
         }
     }
 }
@@ -44,26 +44,14 @@ impl StyledString {
     }
 
     /// Sets the foreground color (the text) of the string.
-    pub fn foreground(&mut self, color: u8) -> Self {
-        self.foreground = Color::Foreground(color);
+    pub fn foreground(&mut self, color: impl Into<ForegroundColor>) -> Self {
+        self.foreground = color.into();
         self.to_owned()
     }
 
     /// Sets the background color of the string.
-    pub fn background(&mut self, color: u8) -> Self {
-        self.background = Color::Background(color);
-        self.to_owned()
-    }
-
-    /// Sets the foreground color (the text) of the string to an RGB value.
-    pub fn rgb_foreground(&mut self, color: Rgb) -> Self {
-        self.foreground = Color::RgbForeground(color);
-        self.to_owned()
-    }
-
-    /// Sets the background color of the string to an RGB value.
-    pub fn rgb_background(&mut self, color: Rgb) -> Self {
-        self.background = Color::RgbBackground(color);
+    pub fn background(&mut self, color: impl Into<BackgroundColor>) -> Self {
+        self.background = color.into();
         self.to_owned()
     }
 
@@ -147,12 +135,12 @@ impl Display for StyledString {
 
         // Modes come first in the sequence.
         for mode in &self.modes {
-            sequence.push(*mode)
+            sequence.push(*mode);
         }
 
         // Colors come next; we will apply foreground then background.
         match &self.foreground {
-            Color::Foreground(color) => {
+            ForegroundColor::Simple(color) => {
                 if [BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE].contains(color) {
                     sequence.push(*color);
                 } else {
@@ -161,18 +149,18 @@ impl Display for StyledString {
                     sequence.push(*color);
                 }
             }
-            Color::RgbForeground(rgb) => {
+            ForegroundColor::Rgb(rgb) => {
                 sequence.push(FOREGROUND);
                 sequence.push(HIGH_DEPTH);
                 sequence.push(rgb.red);
                 sequence.push(rgb.green);
                 sequence.push(rgb.blue);
             }
-            _ => {}
+            ForegroundColor::Empty => {}
         }
 
         match &self.background {
-            Color::Background(color) => {
+            BackgroundColor::Simple(color) => {
                 if [BLACK, RED, GREEN, YELLOW, BLUE, MAGENTA, CYAN, WHITE].contains(color) {
                     sequence.push(*color + 10);
                 } else {
@@ -181,21 +169,21 @@ impl Display for StyledString {
                     sequence.push(*color);
                 }
             }
-            Color::RgbBackground(rgb) => {
+            BackgroundColor::Rgb(rgb) => {
                 sequence.push(BACKGROUND);
                 sequence.push(HIGH_DEPTH);
                 sequence.push(rgb.red);
                 sequence.push(rgb.green);
                 sequence.push(rgb.blue);
             }
-            _ => {}
+            BackgroundColor::Empty => {}
         }
 
         let delimited_sequence =
-            sequence.iter().map(|byte| format!("{}", byte)).collect::<Vec<String>>().join(";");
+            sequence.iter().map(|byte| format!("{byte}")).collect::<Vec<String>>().join(";");
 
         let text = format!("\x1b[{}m{}\x1b[0m", &delimited_sequence, &self.text);
 
-        write!(f, "{}", text)
+        write!(f, "{text}")
     }
 }

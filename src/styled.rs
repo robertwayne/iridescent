@@ -1,16 +1,14 @@
-use crate::{constants::*, Rgb, StyledString};
+use crate::{background::BackgroundColor, constants::*, foreground::ForegroundColor, StyledString};
 
-/// Implements all the `StyledString` functions on any type `AsRef<str>`. Handles conversion
-/// internally so that the caller doesn't have to worry about it.
+/// Implements all the `StyledString` functions on any type `AsRef<str>`.
+/// Handles conversion internally so that the caller doesn't have to worry about
+/// it.
 pub trait Styled {
     fn to_styled_string(&self) -> StyledString;
 
     // Various color types.
-    // TODO: Refactor this down to just use `foreground` and `background` methods.
-    fn foreground(&self, color: u8) -> StyledString;
-    fn background(&self, color: u8) -> StyledString;
-    fn rgb_foreground(&self, rgb: Rgb) -> StyledString;
-    fn rgb_background(&self, rgb: Rgb) -> StyledString;
+    fn foreground(&self, color: impl Into<ForegroundColor>) -> StyledString;
+    fn background(&self, color: impl Into<BackgroundColor>) -> StyledString;
 
     // Text modes.
     fn bold(&self) -> StyledString;
@@ -22,7 +20,8 @@ pub trait Styled {
     fn hidden(&self) -> StyledString;
     fn strike(&self) -> StyledString;
 
-    // These are helper methods for quickly styling just the foreground with basic colors.
+    // These are helper methods for quickly styling just the foreground with
+    // basic colors.
     fn black(&self) -> StyledString;
     fn red(&self) -> StyledString;
     fn green(&self) -> StyledString;
@@ -34,29 +33,19 @@ pub trait Styled {
 }
 
 impl<S: AsRef<str>> Styled for S {
-    /// Converts an AsRef<str> to a StyledString.
+    /// Converts an `AsRef`<str> to a `StyledString`.
     fn to_styled_string(&self) -> StyledString {
         StyledString::new(self.as_ref())
     }
 
     /// Sets the foreground color (the text) of the string.
-    fn foreground(&self, color: u8) -> StyledString {
-        StyledString::new(self.as_ref()).foreground(color)
+    fn foreground(&self, color: impl Into<ForegroundColor>) -> StyledString {
+        StyledString::new(self.as_ref()).foreground(color.into())
     }
 
     /// Sets the background color of the string.
-    fn background(&self, color: u8) -> StyledString {
-        StyledString::new(self.as_ref()).background(color)
-    }
-
-    /// Sets the foreground color (the text) of the string to a 24-bit RGB value.
-    fn rgb_foreground(&self, rgb: Rgb) -> StyledString {
-        StyledString::new(self.as_ref()).rgb_foreground(rgb)
-    }
-
-    /// Sets the background color of the string to a 24-bit RGB value.
-    fn rgb_background(&self, rgb: Rgb) -> StyledString {
-        StyledString::new(self.as_ref()).rgb_background(rgb)
+    fn background(&self, color: impl Into<BackgroundColor>) -> StyledString {
+        StyledString::new(self.as_ref()).background(color.into())
     }
 
     /// Applies the bold attribute to the string.
