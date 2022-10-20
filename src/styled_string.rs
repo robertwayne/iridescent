@@ -1,6 +1,13 @@
 use std::fmt::Display;
 
-use crate::{background::BackgroundColor, constants::*, foreground::ForegroundColor};
+use crate::{
+    background::BackgroundColor,
+    constants::{
+        BACKGROUND, BLACK, BLINK, BLUE, BOLD, CYAN, DIM, FOREGROUND, GREEN, HIDDEN, HIGH_DEPTH,
+        INVERT, ITALIC, LOW_DEPTH, MAGENTA, RED, STRIKE, UNDERLINE, WHITE, YELLOW,
+    },
+    foreground::ForegroundColor,
+};
 
 /// Represents a string with internal data for the ANSI escape sequences, so it
 /// can be constructed when the `Display` is called. It is preferred to use the

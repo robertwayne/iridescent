@@ -1,4 +1,9 @@
-use crate::{background::BackgroundColor, constants::*, foreground::ForegroundColor, StyledString};
+use crate::{
+    background::BackgroundColor,
+    constants::{BLACK, BLUE, CYAN, GREEN, MAGENTA, RED, WHITE, YELLOW},
+    foreground::ForegroundColor,
+    StyledString,
+};
 
 /// Implements all the `StyledString` functions on any type `AsRef<str>`.
 /// Handles conversion internally so that the caller doesn't have to worry about
