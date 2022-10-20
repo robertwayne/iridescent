@@ -1,5 +1,9 @@
 # Change Log
 
+## 2022.10.19 - v0.2.1
+
+- Removed some unnecessary clones.
+
 ## 2022.10.19 - v0.2
 
 - **Breaking** Consolidated the `rgb_foreground` and `rgb_background` methods
