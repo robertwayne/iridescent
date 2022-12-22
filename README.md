@@ -86,7 +86,7 @@ fn main() {
 
 ### Hexadecimal Colors
 
-As of `v0.2`, you can now use hexadecimal color literals now, as well!
+As of `v0.2`, you can now use hexadecimal color literals, as well!
 
 ```rust
 use iridescent::{Styled, constants::{RED, WHITE}};
