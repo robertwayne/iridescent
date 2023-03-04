@@ -1,10 +1,13 @@
 #![doc = include_str!("../README.md")]
+#![forbid(unsafe_code)]
 
+/// An enum representing a background color type.
 pub mod background;
 /// An enum representing different color types applied to a `StyledString`.
 pub mod color;
 /// Various constants used by the library, including the base ANSI color values.
 pub mod constants;
+/// An enum representing a foreground color type.
 pub mod foreground;
 /// Trait implementing various methods on `&str` and `String` types.
 pub mod styled;

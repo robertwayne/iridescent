@@ -41,7 +41,7 @@ impl From<&str> for StyledString {
 
 impl From<String> for StyledString {
     fn from(s: String) -> Self {
-        Self::new(&s)
+        Self::new(s)
     }
 }
 

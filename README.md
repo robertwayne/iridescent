@@ -19,12 +19,15 @@
 
 ## Features
 
-`iridescent` is a library for styling terminal text easily. It supports basic
-ANSI sequences, Xterm-256 colors, and RGB. You can operate directly on
-`&str` and `String` types without needing to worry about conversions. It is
-important to note that not all terminals support all features. While *most*
-modern terminals will support up to true RGB colors, certain text modes, such as
-`blink`, are not reliable.
+`iridescent` is a dependency-free library for styling terminal text easily.
+
+It supports basic ANSI sequences, Xterm-256 colors, and RGB. You can operate
+directly on `&str` and `String` types without needing to worry about
+conversions.
+
+It is important to note that not all terminals support all features. While
+*most* modern terminals will support up to true RGB colors, certain text modes,
+such as `blink`, are not reliable.
 
 ## Usage
 
@@ -34,8 +37,8 @@ iridescent = { version = "0.2" }
 ```
 
 The only requirement is that you import the `Styled` trait into the module you
-plan on using library methods. Once you have declared it at the top of your module,
-the methods will be available on all `&str` and `String` types.
+plan on using library methods. Once you have declared it at the top of your
+module, the methods will be available on all `&str` and `String` types.
 
 Note that all `Styled` methods can be chained, as seen in the example above
 where first we call the foreground method, followed by the bold method. These do
