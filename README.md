@@ -19,12 +19,15 @@
 
 ## Features
 
-`iridescent` is a library for styling terminal text easily. It supports basic
-ANSI sequences, Xterm-256 colors, and RGB. You can operate directly on `&str`
-and `String` types without needing to worry about conversions. It is important
-to note that not all terminals support all features. While *most* modern
-terminals will support up to true RGB colors, certain text modes, such as
-`blink`, are not reliable.
+`iridescent` is a dependency-free library for styling terminal text easily.
+
+It supports basic ANSI sequences, Xterm-256 colors, and RGB. You can operate
+directly on `&str` and `String` types without needing to worry about
+conversions.
+
+It is important to note that not all terminals support all features. While
+*most* modern terminals will support up to true RGB colors, certain text modes,
+such as `blink`, are not reliable.
 
 ## Usage
 
