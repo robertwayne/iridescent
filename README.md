@@ -114,9 +114,9 @@ with --features <feature_name>.
 <!-- markdownlint-disable -->
 | Example | File                                    | Description                                                              | Features   |
 |---------|-----------------------------------------|--------------------------------------------------------------------------|------------|
-| rainbow | [colors.rs](/examples/ansi/colors.rs)   | Shows off all base colors in the terminal.                               |            |
-| rgb     | [rainbow.rs](/examples/ansi/rainbow.rs) | Shows off both 8-bit and 24-bit depth randomized colors in the terminal. | `random`   |
-| modes   | [modes.rs](/examples/ansi/modes.rs)     | Shows off the various text modes in the terminal.                        |            |
+| rainbow | [colors.rs](/examples/colors.rs)   | Shows off all base colors in the terminal.                               |            |
+| rgb     | [rainbow.rs](/examples/rainbow.rs) | Shows off both 8-bit and 24-bit depth randomized colors in the terminal. | `random`   |
+| modes   | [modes.rs](/examples/modes.rs)     | Shows off the various text modes in the terminal.                        |            |
 <!-- markdownlint-enable -->
 
 ## Feature Flags
