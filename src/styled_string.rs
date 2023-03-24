@@ -47,7 +47,10 @@ impl From<String> for StyledString {
 
 impl StyledString {
     pub fn new<S: AsRef<str>>(text: S) -> Self {
-        Self { text: text.as_ref().to_string(), ..Default::default() }
+        Self {
+            text: text.as_ref().to_string(),
+            ..Default::default()
+        }
     }
 
     /// Sets the foreground color (the text) of the string.
@@ -186,8 +189,11 @@ impl Display for StyledString {
             BackgroundColor::Empty => {}
         }
 
-        let delimited_sequence =
-            sequence.iter().map(|byte| format!("{byte}")).collect::<Vec<String>>().join(";");
+        let delimited_sequence = sequence
+            .iter()
+            .map(|byte| format!("{byte}"))
+            .collect::<Vec<String>>()
+            .join(";");
 
         let text = format!("\x1b[{}m{}\x1b[0m", &delimited_sequence, &self.text);
 

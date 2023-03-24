@@ -28,16 +28,44 @@ fn main() {
     }
 
     // Print the foreground Xterm-256 examples
-    println!("{}", fg_low_bits.iter().map(|s| s.to_string()).collect::<Vec<String>>().join(" "));
+    println!(
+        "{}",
+        fg_low_bits
+            .iter()
+            .map(|s| s.to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
 
     // Print the background Xterm-256 examples
-    println!("{}", bg_low_bits.iter().map(|s| s.to_string()).collect::<Vec<String>>().join(" "));
+    println!(
+        "{}",
+        bg_low_bits
+            .iter()
+            .map(|s| s.to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
 
     // Print the foreground RGB examples
-    println!("{}", fg_high_bits.iter().map(|s| s.to_string()).collect::<Vec<String>>().join(" "));
+    println!(
+        "{}",
+        fg_high_bits
+            .iter()
+            .map(|s| s.to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
 
     // Print the background RGB examples
-    println!("{}", bg_high_bits.iter().map(|s| s.to_string()).collect::<Vec<String>>().join(" "));
+    println!(
+        "{}",
+        bg_high_bits
+            .iter()
+            .map(|s| s.to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
 }
 
 #[cfg(not(feature = "random"))]

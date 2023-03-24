@@ -55,8 +55,22 @@ fn main() {
     backgrounds.push(bg_white);
 
     // Print the foreground examples
-    println!("{}", foregrounds.iter().map(|s| s.to_string()).collect::<Vec<String>>().join(" "));
+    println!(
+        "{}",
+        foregrounds
+            .iter()
+            .map(|s| s.to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
 
     // Print the background examples
-    println!("{}", backgrounds.iter().map(|s| s.to_string()).collect::<Vec<String>>().join(" "));
+    println!(
+        "{}",
+        backgrounds
+            .iter()
+            .map(|s| s.to_string())
+            .collect::<Vec<String>>()
+            .join(" ")
+    );
 }
