@@ -53,7 +53,11 @@ impl Rgb {
     #[cfg(feature = "random")]
     pub fn random() -> Rgb {
         {
-            Rgb::new(rand::random::<u8>(), rand::random::<u8>(), rand::random::<u8>())
+            Rgb::new(
+                rand::random::<u8>(),
+                rand::random::<u8>(),
+                rand::random::<u8>(),
+            )
         }
     }
 }
