@@ -1,5 +1,7 @@
 use crate::color::Rgb;
 
+/// Represents a color that will be applied to the background of a
+/// `StyledString`.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum BackgroundColor {
     Empty,

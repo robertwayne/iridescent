@@ -1,6 +1,6 @@
 use crate::color::Rgb;
 
-/// Represents a color that will be applied to a `StyledString`.
+/// Represents a color that will be applied to the text of a `StyledString`.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum ForegroundColor {
     Empty,

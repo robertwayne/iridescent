@@ -53,7 +53,7 @@ impl StyledString {
         }
     }
 
-    /// Sets the foreground color (the text) of the string.
+    /// Sets the text color of the string.
     pub fn foreground(mut self, color: impl Into<ForegroundColor>) -> Self {
         self.foreground = color.into();
         self
